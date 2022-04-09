@@ -1,0 +1,35 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+        stroke-dasharray: 12 12;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g>
+    <g>
+      <line class="cls-1" x1="302.71" y1="91.93" x2="303.15" y2="128.04"/>
+      <polygon class="cls-2" points="293.14 125.24 303.32 142.39 313.08 125 293.14 125.24"/>
+    </g>
+    <g>
+      <path class="cls-1" d="M304.3,147.94c-127.84-55.27-195.11,111.91-23,84.13"/>
+      <polygon class="cls-2" points="280.16 242.34 295.39 229.46 276.63 222.71 280.16 242.34"/>
+    </g>
+    <g>
+      <path class="cls-1" d="M292.9,229.46c88.89-9.31,23.56,177.75-95.28,112.13"/>
+      <polygon class="cls-2" points="205.34 334.44 185.4 334.06 195.04 351.52 205.34 334.44"/>
+    </g>
+    <g>
+      <path class="cls-1" d="M182.55,327.43c-24.09-26.77,66.78-75.67,127.89,79.2"/>
+      <polygon class="cls-2" points="300.04 407.44 315.47 420.07 318.69 400.39 300.04 407.44"/>
+    </g>
+  </g>
+</svg>

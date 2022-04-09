@@ -1,0 +1,77 @@
+.show-item {
+  animation: fadein 0.5s;
+}
+
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.appear {
+  opacity: 1;
+  transition: 0.3s ease-in ;
+}
+
+.disappear {
+  opacity: 0;
+  transition: 0.3s ease-in;
+}
+
+.showItem {
+  animation: showItemAni 0.8s;
+  animation-timing-function: ease-in-out;
+  width: 50%;
+}
+
+
+@keyframes showItemAni {
+  0%, 50% {
+    transform: scale(0.75);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.disable {
+  pointer-events: none;
+}
+
+
+
+.rotate-transition {
+  transition: 0.2s linear
+}
+
+.rotate-half {
+  transform: rotateY(90deg);
+}
+
+.rotate-complete {
+  transform: rotateY(0deg);
+}
+
+.rotate-fomart {
+  transform: rotateY(0deg);
+}
+
+.hideItemBtn {
+  transition: 0.5s !important;
+  transform: scale(0.6) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.item-disable{
+  opacity: 0.8;
+}

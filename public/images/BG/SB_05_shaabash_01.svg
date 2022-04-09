@@ -1,0 +1,33 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: url(#radial-gradient);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect class="cls-1" width="1600" height="900"/>
+    </clipPath>
+    <radialGradient id="radial-gradient" cx="1745.5" cy="450" r="649.04" gradientTransform="translate(-1556.43) scale(1.35 1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#be33ff"/>
+      <stop offset="0.18" stop-color="#ba32fd"/>
+      <stop offset="0.34" stop-color="#af2ef6"/>
+      <stop offset="0.5" stop-color="#9d28ea"/>
+      <stop offset="0.66" stop-color="#8220da"/>
+      <stop offset="0.81" stop-color="#6016c5"/>
+      <stop offset="0.96" stop-color="#3809ac"/>
+      <stop offset="1" stop-color="#2c05a5"/>
+    </radialGradient>
+  </defs>
+  <g class="cls-2">
+    <rect class="cls-3" x="-280" width="2160" height="900"/>
+  </g>
+</svg>
