@@ -1,11 +1,11 @@
 const scaleImageList = [
-    "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13",
+    "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14"
 ]
 
 const moveImageList = [
     '01', '02', '03', '04', '05',
     '03', '01', '01', '05', '03',
-    '01', '05'
+    '01', '05', '02'
 
 ]
 
@@ -22,13 +22,10 @@ const letterList = [
     { path: '10O', s: 0.26, l: 0.43, t: 0.03 },
     { path: '11OU', s: 0.22, l: 0.49, t: 0.26 },
     { path: '12AM', s: 0.24, l: 0.49, t: 0.21 },
+    { path: '13AHA', s: 0.24, l: 0.49, t: 0.21 },
 ]
 
 export { scaleImageList, moveImageList, letterList }
-
-
-
-
 
 const highlightPreList = [
     "SB_04_Letter_Tracing_01_a/SB_04_a_Arrow_0",
@@ -90,7 +87,7 @@ const animtionList = [
     { path: 'SB_04_o_1', scale: 0.46, left: 0.23, top: 0.172 },
     { path: 'SB_04_au_1', scale: 0.36, left: 0.315, top: 0.195 },
     { path: 'SB_04_am_1', scale: 0.52, left: 0.235, top: 0.115 },
-    { path: 'SB_04_ahaa_1', scale: 0.53, left: 0.205, top: 0.205 },
+    { path: 'SB_04_ahaa_1', scale: 0.43, left: 0.305, top: 0.205 },
 ]
 const letterPosList = [
     {
@@ -282,7 +279,7 @@ const outLinePreList = [
         white: 'SB_04_Letter_Tracing_13_ahaa/SB_04_ahaa_White_Highlight'
     },
 ]
-const lineLengthList = [49, 47, 37, 37, 45, 45, 46, 45, 42, 42, 42, 45, 48];
+const lineLengthList = [49, 47, 37, 37, 45, 45, 46, 45, 42, 42, 42, 45, 48, 48];
 const HeavyLengthList = [
     [8, 3],
     [9, 6],
@@ -390,7 +387,8 @@ const firstPosList = [
         { x: 612, y: 214, letter_start: true },
         { x: 841, y: 222, p: true, letter_start: true },
         { x: 841, y: 322, p: true, letter_start: true },
-    ]
+    ],
+
 ]
 const movePath = [
     [
@@ -1244,7 +1242,7 @@ const showingLayoutList = [
         {
             wPath: 'SB_05_BG_PI_18_unt',
             hPath: 'SB_05_BG_PI_18_YH_unt',
-            tPath: 'SB_05_TI_06_unn',
+            tPath: 'SB_05_TI_06_unt',
             s: 1, r: 0.2
         },
 
@@ -1258,7 +1256,7 @@ const showingLayoutList = [
         {
             wPath: 'SB_05_BG_PI_16_unn',
             hPath: 'SB_05_BG_PI_16_YH_unn',
-            tPath: 'SB_05_TI_06_unt',
+            tPath: 'SB_05_TI_06_unn',
             s: 1, r: 0.0
         }
     ],
@@ -1394,6 +1392,28 @@ const showingLayoutList = [
             s: 0.9, r: 0.05
         }
     ],
+    [
+        {
+            wPath: 'SB_05_BG_PI_33_anguthi',
+            hPath: 'SB_05_BG_PI_33_YH_anguthi',
+            tPath: 'SB_05_TI_12_angithi',
+            s: 0.6, r: 0.2
+        },
+
+        {
+            wPath: 'SB_05_BG_PI_34_anda',
+            hPath: 'SB_05_BG_PI_34_YH_anda',
+            tPath: 'SB_05_TI_12_anda',
+            s: 0.8, r: 0.1
+        },
+
+        {
+            wPath: 'SB_05_BG_PI_32_angoor',
+            hPath: 'SB_05_BG_PI_32_YH_angoor',
+            tPath: 'SB_05_TI_12_angoor',
+            s: 0.9, r: 0.05
+        }
+    ],
 ]
 
 export {
@@ -1402,4 +1422,4 @@ export {
 }
 
 
-export const notJudgeBackList  = []
+export const notJudgeBackList = []

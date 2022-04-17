@@ -29,6 +29,7 @@ const letterList = [
     { path: '10O', s: 2.4, l: -0.7, b: -0.42 },
     { path: '11OU', s: 1.2, l: -0.1, b: 0.42 },
     { path: '12AM', s: 1.4, l: -0.2, b: 0.42 },
+    { path: '13AHA', s: 1.4, l: -0.2, b: 0.42 },
 ]
 
 var repeatStep = 0;
@@ -92,7 +93,7 @@ export default function Scene({ nextFunc, _geo,
     const rabitBaseRef = useRef();
     const rabitAniRef = useRef();
     const introRabit = useRef();
-    const rabitListRef = Array.from({ length: 8 }, ref => useRef());
+    // const rabitListRef = Array.from({ length: 8 }, ref => useRef());
 
     const letterRefList = Array.from({ length: 3 }, ref => useRef());
     const subLetterList = Array.from({ length: 3 }, ref => useRef());
@@ -161,30 +162,26 @@ export default function Scene({ nextFunc, _geo,
         audioList.bodyAudio1.src = returnAudioPath(explainVoices[0])
         audioList.bodyAudio2.src = returnAudioPath(clapVoices[0])
 
-        rabitBaseRef.current.style.transform = 'translateX(' + _geo.width * -0.5 + 'px)'
-        playAnimation()
+        // rabitBaseRef.current.style.transform = 'translateX(' + _geo.width * -0.5 + 'px)'
+        // playAnimation()
+        // rabitBaseRef.current.style.transition = '1.5s linear'
+        rabitBaseRef.current.style.transform = 'translateX(' + _geo.width * 0 + 'px)'
 
         setTimeout(() => {
-
-            rabitBaseRef.current.style.transition = '1.5s linear'
-            rabitBaseRef.current.style.transform = 'translateX(' + _geo.width * 0 + 'px)'
+            stopAnimation()
             setTimeout(() => {
-                stopAnimation()
+                introRabit.current.play();
+                audioList.bodyAudio1.play().catch(error => { }).catch(error => { });
+
+                playerRef.current.play();
+
                 setTimeout(() => {
-                    introRabit.current.play();
-                    audioList.bodyAudio1.play().catch(error => { }).catch(error => { });
+                    introRabit.current.stop();
+                    audioList.bodyAudio1.src = returnAudioPath(explainVoices[1])
+                }, audioList.bodyAudio1.duration * 1000);
+            }, 500);
 
-                    setTimeout(() => {
-                        introRabit.current.stop();
-                    }, audioList.bodyAudio1.duration * 1000);
-                    setTimeout(() => {
-                        playerRef.current.play();
-                        audioList.bodyAudio1.src = returnAudioPath(explainVoices[1])
-                    }, audioList.bodyAudio1.duration * 1000 + 300);
-                }, 500);
-
-            }, 1500);
-        }, 1000);
+        }, 1500);
 
 
         currentLingLength = lineLengthList[letterNum]
@@ -205,7 +202,6 @@ export default function Scene({ nextFunc, _geo,
         }, 500);
 
         setRepeatAudio(audioList.bodyAudio1)
-
 
         return () => {
             currentImgNumOriginal = 0;
@@ -247,12 +243,12 @@ export default function Scene({ nextFunc, _geo,
     }
 
     const stopAnimation = () => {
-        clearInterval(runInterval)
-        rabitBaseRef.current.style.transition = '0.0s'
-        rabitAniRef.current.className = 'showObject'
-        rabitListRef.map(rabit => {
-            rabit.current.setClass('hideObject')
-        })
+        // clearInterval(runInterval)
+        // rabitBaseRef.current.style.transition = '0.0s'
+        // rabitAniRef.current.className = 'showObject'
+        // rabitListRef.map(rabit => {
+        //     rabit.current.setClass('hideObject')
+        // })
     }
 
     const showingDrawingPanel = () => {
@@ -304,27 +300,36 @@ export default function Scene({ nextFunc, _geo,
 
                 letter.current.setClass('appear')
                 setTimeout(() => {
+                    wordVoiceList[index].play().catch(error => { })
+                }, 300);
+
+
+                setTimeout(() => {
                     letter.current.setClass('disapear')
-
-                    showingHighImgList[index].current.setClass('appear')
-                    subLetterList[index].current.setClass('appear')
-                    audioList.audioTing.play();
-                    let showIndex = 0;
-                    sparkRefList[showIndex].current.setClass('showObject')
-                    let showInterval = setInterval(() => {
-                        sparkRefList[showIndex].current.setClass('hideObject')
-                        if (showIndex < 2) {
-                            showIndex++
-                            sparkRefList[showIndex].current.setClass('showObject')
-                        }
-                        else {
-                            clearInterval(showInterval)
-                        }
-                    }, 200);
-
+                    letter.current.setStyle({
+                        transform: 'scale(0.5)'
+                    })
                     setTimeout(() => {
-                        wordVoiceList[index].play().catch(error => { })
-                    }, 500);
+                        showingHighImgList[index].current.setClass('appear')
+                        subLetterList[index].current.setClass('appear')
+                        audioList.audioTing.play();
+                        let showIndex = 0;
+                        sparkRefList[showIndex].current.setClass('showObject')
+                        let showInterval = setInterval(() => {
+                            sparkRefList[showIndex].current.setClass('hideObject')
+                            if (showIndex < 2) {
+                                showIndex++
+                                sparkRefList[showIndex].current.setClass('showObject')
+                            }
+                            else {
+                                clearInterval(showInterval)
+                            }
+                        }, 200);
+                    }, 400);
+
+
+
+
 
                     setTimeout(() => {
                         reviewImgList[index].current.style.transition = '0.5s'
@@ -507,15 +512,16 @@ export default function Scene({ nextFunc, _geo,
                     });
 
                     markRefList[repeatStep].current.setUrl('SB_04_Progress bar/SB_04_progress bar_03.svg')
+
                     audioList.audioSuccess.play().catch(error => { });
                     setTimeout(() => {
-                        audioList.bodyAudio2.play().catch(error => { });
+                        if (repeatStep == 2)
+                            audioList.bodyAudio2.play().catch(error => { });
                     }, 1000);
 
                     audioList.bodyAudio1.src = returnAudioPath(explainVoices[repeatStep + 2])
 
                     setTimeout(() => {
-
                         setTimeout(() => {
                             isExlaining = false;
                             if (repeatStep < 2) {
@@ -523,7 +529,8 @@ export default function Scene({ nextFunc, _geo,
                                     isExlaining = true;
                                     audioList.letterAudio.play().catch(error => { });
                                     timerList[1] = setTimeout(() => {
-                                        audioList.bodyAudio1.play().catch(error => { });
+                                        if (letterNum != 12)
+                                            audioList.bodyAudio1.play().catch(error => { });
                                         timerList[2] = setTimeout(() => {
                                             isExlaining = false;
                                         }, audioList.bodyAudio1.duration * 1000);
@@ -574,7 +581,10 @@ export default function Scene({ nextFunc, _geo,
                                 subCurves = []
                             }
                             else {
-                                reviewFunc();
+                                if (currentLetterNum != 12)
+                                    reviewFunc();
+                                else
+                                    nextFunc()
                             }
                         }, showingTime);
 
@@ -843,7 +853,8 @@ export default function Scene({ nextFunc, _geo,
 
                                             audioList.audioSuccess.play().catch(error => { });
                                             setTimeout(() => {
-                                                audioList.bodyAudio2.play().catch(error => { });
+                                                if (repeatStep == 2)
+                                                    audioList.bodyAudio2.play().catch(error => { });
                                             }, 1000);
                                             audioList.bodyAudio1.src = returnAudioPath(explainVoices[repeatStep + 2])
 
@@ -927,27 +938,38 @@ export default function Scene({ nextFunc, _geo,
                                                 c.draw(subGraphics, 100);
                                             });
 
-                                            circleObj.off('pointermove', moveFunc, this);
+                                            // circleObj.off('pointermove', moveFunc, this);
+                                            parentObject.current.style.pointerEvents = 'none'
+
+                                            circleObj.x = x;
+                                            circleObj.y = y;
+
+                                            movingImage.x = x;
+                                            movingImage.y = y;
+
 
                                             stepCount++
-                                            currentPath = movePath[letterNum][stepCount]
-                                            rememberX = currentPath[0].x
-
-                                            circleObj.x = movePath[letterNum][stepCount][0].x;
-                                            circleObj.y = movePath[letterNum][stepCount][0].y;
-
-                                            movingImage.x = movePath[letterNum][stepCount][0].x;
-                                            movingImage.y = movePath[letterNum][stepCount][0].y;
+                                            let timeDuration = 0
+                                            if (firstPosList[letterNum][stepCount].letter_start) {
+                                                timeDuration = 2500
+                                            }
 
                                             setTimeout(() => {
-
                                                 if (firstPosList[letterNum][stepCount].letter_start) {
                                                     highlightList[highCurrentNum].visible = false
-
+                                                    timeDuration = 2500
                                                     highCurrentNum++
 
                                                     highlightList[highCurrentNum].visible = true
                                                 }
+                                                currentPath = movePath[letterNum][stepCount]
+                                                rememberX = currentPath[0].x
+
+                                                circleObj.x = movePath[letterNum][stepCount][0].x;
+                                                circleObj.y = movePath[letterNum][stepCount][0].y;
+
+                                                movingImage.x = movePath[letterNum][stepCount][0].x;
+                                                movingImage.y = movePath[letterNum][stepCount][0].y;
 
                                                 curve = new Phaser.Curves.Spline([firstPosList[letterNum][stepCount].x, firstPosList[letterNum][stepCount].y]);
                                                 curves = []
@@ -955,15 +977,21 @@ export default function Scene({ nextFunc, _geo,
                                                 subCurve = new Phaser.Curves.Spline([currentPath[0].x, currentPath[0].y]);
                                                 subCurves = []
 
-
+                                                curve.addPoint(circleObj.x, circleObj.y);
+                                                
                                                 HeavyLengthList.map(value => {
                                                     if (value[0] == letterNum && value[1] == stepCount) {
                                                         currentLingLength = 90
                                                     }
                                                 })
 
-                                                curve.addPoint(circleObj.x, circleObj.y);
-                                            }, 200);
+                                                setTimeout(() => {
+                                                    
+                                                    parentObject.current.style.pointerEvents = ''
+                                                    
+                                                }, 200);
+                                            }, timeDuration);
+
                                         }
                                     }
 
@@ -1130,6 +1158,7 @@ export default function Scene({ nextFunc, _geo,
                                 l: letterList[letterNum].l,
                                 b: letterList[letterNum].b
                             }}
+                            style={{ transform: 'scale(1.45) translateY(-2%)' }}
                             url={'SB05_Text_Interactive/Letters_for_BG/SB_50_TI_BG_' + letterList[letterNum].path + '.svg'}
                         />
 
@@ -1219,6 +1248,7 @@ export default function Scene({ nextFunc, _geo,
                             showingDrawingPanel();
                     }}
                     keepLastFrame={true}
+                    speed={1.2}
 
                     src={prePathUrl() + 'lottieFiles/main/' + animtionList[letterNum].path + '.json'}
                     style={{
@@ -1244,7 +1274,7 @@ export default function Scene({ nextFunc, _geo,
                     pointerEvents: 'none'
                 }}
             >
-                {
+                {/* {
                     Array.from(Array(8).keys()).map(value =>
                         <BaseImage
                             key={value}
@@ -1255,10 +1285,10 @@ export default function Scene({ nextFunc, _geo,
                             url={'SB05_Rabbit_Animation/SB_05_CI_rabbit_01_Animation_0' + (value + 1) + '.svg'} />
                     )
 
-                }
+                } */}
                 <div
                     ref={rabitAniRef}
-                    className='hideObject'
+                    // className='hideObject'
                     style={{
                         position: 'absolute',
                         width: '26%',

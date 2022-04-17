@@ -22,6 +22,8 @@ const audioPath = [
     { first: '02', second: '11', third: '84' },
     { first: '02', second: '12', third: '89' },
     { first: '02', second: '13', third: '39' },
+
+    { first: '02', second: '14', third: '39' },
 ]
 
 
@@ -41,7 +43,7 @@ export default function Scene({ nextFunc, _baseGeo, currentLetterNum, _geo,
     const letterRef = useRef()
     const animationRef = useRef();
 
-    const rabitListRef = Array.from({ length: 8 }, ref => useRef())
+    // const rabitListRef = Array.from({ length: 8 }, ref => useRef())
 
     useEffect(() => {
 
@@ -50,25 +52,30 @@ export default function Scene({ nextFunc, _baseGeo, currentLetterNum, _geo,
 
 
         rabitBaseRef.current.style.transform = 'translateX(' + _baseGeo.width * -0.5 + 'px)'
-        moveBG.current.style.transition = '3s linear'
-        moveBG1.current.style.transition = '3s linear'
+        moveBG.current.style.transition = '0s linear'
+        moveBG1.current.style.transition = '0s linear'
 
-        playAnimation()
-        setTimeout(() => {
-            rabitBaseRef.current.style.transition = '1.8s linear'
-            rabitBaseRef.current.style.transform = 'translateX(' + _baseGeo.width * 0 + 'px)'
-            setTimeout(() => {
 
-                moveBG.current.style.transform = 'translateX(' + _baseGeo.width * (moveImageList[currentLetterNum] != '03'
-                    ? -0.8 : -0.7) + 'px)'
+        moveBG.current.style.transform = 'translateX(' + _baseGeo.width * (moveImageList[currentLetterNum] != '03'
+            ? -0.8 : -0.7) + 'px)'
 
-                moveBG1.current.style.transform = 'translateX(' + _baseGeo.width * (moveImageList[currentLetterNum] != '03'
-                    ? -0.8 : -0.7) + 'px)'
-                setTimeout(() => {
-                    stopAnimation()
-                }, 3000);
-            }, 1800);
-        }, 1500);
+        moveBG1.current.style.transform = 'translateX(' + _baseGeo.width * (moveImageList[currentLetterNum] != '03'
+            ? -0.8 : -0.7) + 'px)'
+
+
+        // playAnimation()
+        stopAnimation()
+        // setTimeout(() => {
+        //     rabitBaseRef.current.style.transition = '1.8s linear'
+        rabitBaseRef.current.style.transform = 'translateX(' + _baseGeo.width * 0 + 'px)'
+        //     setTimeout(() => {
+
+
+        //         setTimeout(() => {
+
+        //         }, 3000);
+        //     }, 1800);
+        // }, 1500);
 
 
 
@@ -92,12 +99,12 @@ export default function Scene({ nextFunc, _baseGeo, currentLetterNum, _geo,
 
     const stopAnimation = () => {
 
-        clearInterval(runInterval)
+        // clearInterval(runInterval)
         animationRef.current.className = 'showObject'
 
-        rabitListRef.map(rabit => {
-            rabit.current.setClass('hideObject')
-        })
+        // rabitListRef.map(rabit => {
+        //     rabit.current.setClass('hideObject')
+        // })
 
         setTimeout(() => {
             letterRef.current.setClass('aniObject')
@@ -110,26 +117,26 @@ export default function Scene({ nextFunc, _baseGeo, currentLetterNum, _geo,
                 setTimeout(() => {
                     introRabit.current.stop();
                     setTimeout(() => {
-                        scaleRef.current.className = 'aniObject'
-                        setTimeout(() => {
-                            audioList.bodyAudio1.play();
+                        if (currentLetterNum != 12) {
+                            scaleRef.current.className = 'aniObject'
                             setTimeout(() => {
-                                parentObject.current.style.transition = '0.5s'
-                                parentObject.current.style.opacity = 0
+                                audioList.bodyAudio1.play();
                                 setTimeout(() => {
-                                    nextFunc()
-                                }, 500);
-                            }, audioList.bodyAudio1.duration * 1000 + 1000);
-                        }, 1500);
+                                    parentObject.current.style.transition = '0.5s'
+                                    parentObject.current.style.opacity = 0
+                                    setTimeout(() => {
+                                        nextFunc()
+                                    }, 500);
+                                }, audioList.bodyAudio1.duration * 1000 + 1000);
+                            }, 1500);
+                        }
+                        else
+                            nextFunc()
                     }, 500);
-
-
                 }, audioList.bodyAudio2.duration * 1000);
             }, audioList.bodyAudio1.duration * 1000 + 300);
 
-
-
-        }, 500);
+        }, 2000);
 
     }
 
@@ -180,7 +187,7 @@ export default function Scene({ nextFunc, _baseGeo, currentLetterNum, _geo,
                     top: _baseGeo.top + 'px',
                 }}
             >
-                {
+                {/* {
                     Array.from(Array(8).keys()).map(value =>
                         <BaseImage
                             key={value}
@@ -191,7 +198,7 @@ export default function Scene({ nextFunc, _baseGeo, currentLetterNum, _geo,
                             url={'SB05_Rabbit_Animation/SB_05_CI_rabbit_01_Animation_0' + (value + 1) + '.svg'} />
                     )
 
-                }
+                } */}
                 <div
                     ref={animationRef}
                     className='hideObject'
@@ -251,14 +258,7 @@ export default function Scene({ nextFunc, _baseGeo, currentLetterNum, _geo,
                     }}
                     src={prePathUrl() + "images/SB05_BG/SB_05_FG_01.svg"}
                 />
-
-
-
             </div>
-
-
-
-
             <img
                 ref={scaleRef}
                 className='hideObject'
@@ -267,7 +267,6 @@ export default function Scene({ nextFunc, _baseGeo, currentLetterNum, _geo,
                     position: 'absolute',
                     left: '0%',
                     top: '0%',
-
                 }}
                 src={prePathUrl() + "images/ScaleBG/SB_05_BG_" + scaleImageList[currentLetterNum] + ".svg"}
             />

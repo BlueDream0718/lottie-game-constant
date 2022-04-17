@@ -14,9 +14,9 @@ var oldBackgroundImage = 'SB_04_intro_BG_01';
 
 let backAudio = loadSound('bMusic', true)
 backAudio.loop = true;
-backAudio.volume = 0.5;
+backAudio.volume = 0.7;
 
-let currentSceneNumber = 11;
+let currentSceneNumber = 0;
 
 let letterVoiceList = [
     '16', '17',
@@ -36,9 +36,11 @@ let wordVoiceList = [
     ['65', '66', '67'],
     ['70', '71', '72'],
     ['75', '76', '77'],
-    ['80', '81', '82'],
+    ['80', '82', '81'],
     ['85', '86', '87'],
-    ['90', '91', '92'],
+    ['90', '92', '91'],
+    ['39', '41', '42'],
+
     ['39', '41', '42'],
 ]
 
@@ -166,7 +168,7 @@ export default function BaseShot() {
 
         setTimeout(() => {
             titleAudio.currentTime = 0;
-            titleAudio.play().catch(error => { });
+            // titleAudio.play().catch(error => { });
         }, 700);
 
 
