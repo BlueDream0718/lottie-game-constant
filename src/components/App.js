@@ -35,7 +35,7 @@ const App = ({ geo, _setBackground, __controlBacksound, _startTransition,
   currentSceneNumber
 }, ref) => {
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(1);
   const [_isBackSoundPlaying, _setBackgroundPlaying] = useState(true);
   const musicRef = useRef();
   __geo = geo;
