@@ -365,7 +365,7 @@ export default function Scene({ nextFunc, _geo,
                     showingOriginImgList[index].current.setClass('disappear')
                     setTimeout(() => {
                         img.current.style.transform = 'scale(1.12)'
-                        // wordVoiceList[index].play().catch(error => { })
+                        audioList.selfLetterAudio.play().catch(error => { })
                         setTimeout(() => {
                             //play audio...
 
@@ -527,14 +527,14 @@ export default function Scene({ nextFunc, _geo,
                             if (repeatStep < 2) {
                                 timerList[0] = setTimeout(() => {
                                     isExlaining = true;
-                                    audioList.letterAudio.play().catch(error => { });
-                                    timerList[1] = setTimeout(() => {
-                                        if (letterNum != 12)
-                                            audioList.bodyAudio1.play().catch(error => { });
-                                        timerList[2] = setTimeout(() => {
-                                            isExlaining = false;
-                                        }, audioList.bodyAudio1.duration * 1000);
-                                    }, 1000);
+                                    // audioList.letterAudio.play().catch(error => { });
+                                    // timerList[1] = setTimeout(() => {
+                                    if (letterNum != 12)
+                                        audioList.bodyAudio1.play().catch(error => { });
+                                    timerList[2] = setTimeout(() => {
+                                        isExlaining = false;
+                                    }, audioList.bodyAudio1.duration * 1000);
+                                    // }, 1000);
                                 }, 1000);
 
                                 currentImgNumOriginal++
@@ -864,13 +864,13 @@ export default function Scene({ nextFunc, _geo,
                                                     if (repeatStep < 2) {
                                                         timerList[0] = setTimeout(() => {
                                                             isExlaining = true;
-                                                            audioList.letterAudio.play().catch(error => { });
-                                                            timerList[1] = setTimeout(() => {
-                                                                audioList.bodyAudio1.play().catch(error => { });
-                                                                timerList[2] = setTimeout(() => {
-                                                                    isExlaining = false;
-                                                                }, audioList.bodyAudio1.duration * 1000);
-                                                            }, 1000);
+                                                            // audioList.letterAudio.play().catch(error => { });
+                                                            // timerList[1] = setTimeout(() => {
+                                                            audioList.bodyAudio1.play().catch(error => { });
+                                                            timerList[2] = setTimeout(() => {
+                                                                isExlaining = false;
+                                                            }, audioList.bodyAudio1.duration * 1000);
+                                                            // }, 1000);
                                                         }, 1000);
 
                                                         startRepeatAudio(7000, 9000)
@@ -938,7 +938,7 @@ export default function Scene({ nextFunc, _geo,
                                                 c.draw(subGraphics, 100);
                                             });
 
-                                            // circleObj.off('pointermove', moveFunc, this);
+                                            circleObj.off('pointermove', moveFunc, this);
                                             parentObject.current.style.pointerEvents = 'none'
 
                                             circleObj.x = x;
@@ -951,44 +951,45 @@ export default function Scene({ nextFunc, _geo,
                                             stepCount++
                                             let timeDuration = 0
                                             if (firstPosList[letterNum][stepCount].letter_start) {
-                                                timeDuration = 2500
+                                                timeDuration = 750
                                             }
 
                                             setTimeout(() => {
-                                                if (firstPosList[letterNum][stepCount].letter_start) {
-                                                    highlightList[highCurrentNum].visible = false
-                                                    timeDuration = 2500
-                                                    highCurrentNum++
 
-                                                    highlightList[highCurrentNum].visible = true
-                                                }
                                                 currentPath = movePath[letterNum][stepCount]
-                                                rememberX = currentPath[0].x
-
-                                                circleObj.x = movePath[letterNum][stepCount][0].x;
-                                                circleObj.y = movePath[letterNum][stepCount][0].y;
-
-                                                movingImage.x = movePath[letterNum][stepCount][0].x;
-                                                movingImage.y = movePath[letterNum][stepCount][0].y;
-
-                                                curve = new Phaser.Curves.Spline([firstPosList[letterNum][stepCount].x, firstPosList[letterNum][stepCount].y]);
-                                                curves = []
-
-                                                subCurve = new Phaser.Curves.Spline([currentPath[0].x, currentPath[0].y]);
-                                                subCurves = []
-
-                                                curve.addPoint(circleObj.x, circleObj.y);
-                                                
-                                                HeavyLengthList.map(value => {
-                                                    if (value[0] == letterNum && value[1] == stepCount) {
-                                                        currentLingLength = 90
-                                                    }
-                                                })
 
                                                 setTimeout(() => {
-                                                    
+                                                    rememberX = currentPath[0].x
+
+                                                    if (firstPosList[letterNum][stepCount].letter_start) {
+                                                        highlightList[highCurrentNum].visible = false
+
+                                                        highCurrentNum++
+
+                                                        highlightList[highCurrentNum].visible = true
+                                                    }
+
+                                                    circleObj.x = movePath[letterNum][stepCount][0].x;
+                                                    circleObj.y = movePath[letterNum][stepCount][0].y;
+
+                                                    movingImage.x = movePath[letterNum][stepCount][0].x;
+                                                    movingImage.y = movePath[letterNum][stepCount][0].y;
+
+                                                    curve = new Phaser.Curves.Spline([firstPosList[letterNum][stepCount].x, firstPosList[letterNum][stepCount].y]);
+                                                    curves = []
+
+                                                    subCurve = new Phaser.Curves.Spline([currentPath[0].x, currentPath[0].y]);
+                                                    subCurves = []
+
+                                                    curve.addPoint(circleObj.x, circleObj.y);
+
+                                                    HeavyLengthList.map(value => {
+                                                        if (value[0] == letterNum && value[1] == stepCount) {
+                                                            currentLingLength = 90
+                                                        }
+                                                    })
                                                     parentObject.current.style.pointerEvents = ''
-                                                    
+                                                    circleObj.on('pointermove', moveFunc, this);
                                                 }, 200);
                                             }, timeDuration);
 

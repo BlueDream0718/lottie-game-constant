@@ -14,7 +14,7 @@ var oldBackgroundImage = 'SB_04_intro_BG_01';
 
 let backAudio = loadSound('bMusic', true)
 backAudio.loop = true;
-backAudio.volume = 0.7;
+backAudio.volume = 0.2;
 
 let currentSceneNumber = 0;
 
@@ -24,7 +24,18 @@ let letterVoiceList = [
     '20', '21',
     '22', '23',
     '24', '25',
-    '26', '27'
+    '26', '27',
+    '28'
+]
+
+let selfLetterVoiceList = [
+    '116', '117',
+    '118', '119',
+    '120', '121',
+    '122', '123',
+    '124', '125',
+    '126', '127',
+    '128'
 ]
 
 let wordVoiceList = [
@@ -54,6 +65,7 @@ let wordAudio2 = loadSound('SB_05_Audio_' + wordVoiceList[currentSceneNumber][1]
 let wordAudio3 = loadSound('SB_05_Audio_' + wordVoiceList[currentSceneNumber][2])  //word voice
 
 let letterAudio = loadSound('SB_05_Audio_' + letterVoiceList[currentSceneNumber])
+let selfLetterAudio = loadSound('SB_05_Audio_' + selfLetterVoiceList[currentSceneNumber])
 
 let audioYeah = loadSound('yeah', true)
 let audioWoo = loadSound('woo', true)
@@ -75,7 +87,7 @@ let audioList = {
     backAudio, titleAudio, bodyAudio1, bodyAudio2,
     wordAudio1, wordAudio2, wordAudio3,
     audioYeah, audioWoo, audioSuccess,
-    letterAudio, audioBuzz, audioClap,
+    letterAudio, audioBuzz, audioClap, selfLetterAudio,
     audioClick, audioTing, audioReplay
 }
 var isOff = false;
