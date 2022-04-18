@@ -529,8 +529,7 @@ export default function Scene({ nextFunc, _geo,
                                     isExlaining = true;
                                     // audioList.letterAudio.play().catch(error => { });
                                     // timerList[1] = setTimeout(() => {
-                                    if (letterNum != 12)
-                                        audioList.bodyAudio1.play().catch(error => { });
+                                    audioList.bodyAudio1.play().catch(error => { });
                                     timerList[2] = setTimeout(() => {
                                         isExlaining = false;
                                     }, audioList.bodyAudio1.duration * 1000);

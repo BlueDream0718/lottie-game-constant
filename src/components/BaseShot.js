@@ -16,7 +16,7 @@ let backAudio = loadSound('bMusic', true)
 backAudio.loop = true;
 backAudio.volume = 0.2;
 
-let currentSceneNumber = 12 ;
+let currentSceneNumber = 7;
 
 let letterVoiceList = [
     '16', '17',
@@ -46,7 +46,7 @@ let wordVoiceList = [
     ['60', '61', '62'],
     ['65', '66', '67'],
     ['70', '71', '72'],
-    ['75', '76', '77'],
+    ['75', '77', '76'],
     ['80', '82', '81'],
     ['85', '86', '87'],
     ['90', '92', '91'],
@@ -197,7 +197,7 @@ export default function BaseShot() {
 
     function playGame() {
 
-        showIntroTitle();
+        // showIntroTitle();
 
         var hidden = "hidden";
 
