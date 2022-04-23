@@ -171,12 +171,12 @@ export default function Scene({ nextFunc, _geo,
             stopAnimation()
             setTimeout(() => {
                 introRabit.current.play();
-                audioList.bodyAudio1.play().catch(error => { }).catch(error => { });
 
-                playerRef.current.play();
+                audioList.bodyAudio1.play().catch(error => { }).catch(error => { });
 
                 setTimeout(() => {
                     introRabit.current.stop();
+                    playerRef.current.play();
                     audioList.bodyAudio1.src = returnAudioPath(explainVoices[1])
                 }, audioList.bodyAudio1.duration * 1000);
             }, 500);
@@ -1133,7 +1133,7 @@ export default function Scene({ nextFunc, _geo,
                             ref={showingOriginImgList[value]}
                             className='hideObject'
                             scale={showingLayoutList[letterNum][value].s}
-                            posInfo={{ b: 0.95, r: showingLayoutList[letterNum][value].r }}
+                            posInfo={{ b: 1, r: showingLayoutList[letterNum][value].r }}
                             url={"SB_04_BG_PI/" + showingLayoutList[letterNum][value].wPath + ".svg"}
                         />
 
@@ -1141,11 +1141,11 @@ export default function Scene({ nextFunc, _geo,
                             ref={showingHighImgList[value]}
                             className='hideObject'
                             scale={showingLayoutList[letterNum][value].s}
-                            posInfo={{ b: 0.95, r: showingLayoutList[letterNum][value].r }}
+                            posInfo={{ b: 1, r: showingLayoutList[letterNum][value].r }}
                             url={"SB_04_BG_PI/" + showingLayoutList[letterNum][value].hPath + ".svg"}
                         />
                         <BaseImage
-                            posInfo={{ r: 0.02, b: 0.3 }}
+                            posInfo={{ r: 0.02, b: showingLayoutList[letterNum][value].tb }}
                             className='hideObject'
                             ref={subLetterList[value]}
                             url={"SB_04_Text_interactive_01/" + showingLayoutList[letterNum][value].tPath + ".svg"}
@@ -1248,7 +1248,7 @@ export default function Scene({ nextFunc, _geo,
                             showingDrawingPanel();
                     }}
                     keepLastFrame={true}
-                    speed={1.2}
+                    // speed={0.8}
 
                     src={prePathUrl() + 'lottieFiles/main/' + animtionList[letterNum].path + '.json'}
                     style={{
