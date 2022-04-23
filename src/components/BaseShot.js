@@ -197,7 +197,7 @@ export default function BaseShot() {
 
     function playGame() {
 
-        // showIntroTitle();
+        showIntroTitle();
 
         var hidden = "hidden";
 
