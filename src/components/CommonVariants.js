@@ -75,19 +75,20 @@ const maskInfoList = [
     { size: '71% 71%', position: '48.7% 55%', url: 'SB_04_Letter_Tracing_13_ahaa/SB_04_ahaa_Grey' },
 ]
 const animtionList = [
-    { path: 'SB_04_a_1', scale: 0.38, left: 0.295, top: 0.205 },
-    { path: 'SB_04_aa_1', scale: 0.42, left: 0.275, top: 0.245 },
-    { path: 'SB_04_i_1', scale: 0.245, left: 0.37, top: 0.192 },
-    { path: 'SB_04_ee_1', scale: 0.245, left: 0.372, top: 0.125 },
-    { path: 'SB_04_u_1', scale: 0.27, left: 0.355, top: 0.22 },
-    { path: 'SB_04_oo_1', scale: 0.435, left: 0.28, top: 0.215 },
-    { path: 'SB_04_r_1', scale: 0.445, left: 0.275, top: 0.22 },
-    { path: 'SB_04_e_1', scale: 0.305, left: 0.348, top: 0.195 },
-    { path: 'SB_04_ai_1', scale: 0.29, left: 0.35, top: 0.142 },
-    { path: 'SB_04_o_1', scale: 0.38, left: 0.35, top: 0.172 },
-    { path: 'SB_04_au_1', scale: 0.36, left: 0.33, top: 0.175 },
-    { path: 'SB_04_am_1', scale: 0.36, left: 0.31, top: 0.115 },
-    { path: 'SB_04_ahaa_1', scale: 0.43, left: 0.305, top: 0.205 },
+    { path: 'SB_04_a_1', scale: 0.38, left: 0.33, top: 0.205 },
+    { path: 'SB_04_aa_1', scale: 0.42, left: 0.32, top: 0.245 },
+    { path: 'SB_04_i_1', scale: 0.28, left: 0.37, top: 0.17 },
+    { path: 'SB_04_ee_1', scale: 0.245, left: 0.382, top: 0.125 },
+    { path: 'SB_04_u_1', scale: 0.33, left: 0.33, top: 0.18 },
+    { path: 'SB_04_oo_1', scale: 0.35, left: 0.35, top: 0.215 },
+    { path: 'SB_04_r_1', scale: 0.445, left: 0.29, top: 0.22 },
+    { path: 'SB_04_e_1', scale: 0.38, left: 0.32, top: 0.16 },
+
+    { path: 'SB_04_ai_1', scale: 0.3, left: 0.37, top: 0.12 },
+    { path: 'SB_04_o_1', scale: 0.38, left: 0.33, top: 0.16 },
+    { path: 'SB_04_au_1', scale: 0.38, left: 0.33, top: 0.16 },
+    { path: 'SB_04_am_1', scale: 0.36, left: 0.33, top: 0.16 },
+    { path: 'SB_04_ahaa_1', scale: 0.43, left: 0.305, top: 0.22 },
 ]
 const letterPosList = [
     {
