@@ -16,7 +16,7 @@ let backAudio = loadSound('bMusic', true)
 backAudio.loop = true;
 backAudio.volume = 0.2;
 
-let currentSceneNumber = 12;
+let currentSceneNumber = 11;
 
 let letterVoiceList = [
     '16', '17',
@@ -50,8 +50,7 @@ let wordVoiceList = [
     ['80', '82', '81'],
     ['85', '86', '87'],
     ['90', '92', '91'],
-
-    ['301', '41', '42'],
+    ['311', '41', '42'],
     ['39', '41', '42'],
 ]
 
